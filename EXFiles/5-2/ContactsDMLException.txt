@@ -116,23 +116,30 @@ public class ContactsDML {
         //          sObjects named lsr and initialize it to the result of calling
         //          the insert method of the Database class passing in as parameters
         //          the list contacts and the Boolean value false to indicate a partial commit.
-
+		List<Database.SaveResult> lsr = Database.insert(contacts, false);
+        
         // TODO #2: Create a for loop with an iterator of type Database.SaveResult
         //          named sr that iterates over the List lsr.
-
+        for (Database.SaveResult sr : lsr) {
+        
             // TODO #3: Within the for loop create an if statement that uses the
             //          isSuccess method of the Database.SaveResult class to
             //          determine if the insert of sr was unsuccessful.
-
+            if(!sr.isSuccess()) {
+                
                 // TODO #4: Within the if statement create a for loop with an iterator
                 //          of type Database.Error named err that iterates over the
                 //          result returned by calling the getErrors method of the
                 //          class Database.SaveResult on the variable sr.
-
+				for (Database.Error err : sr.getErrors()) {
+                    
                     // TODO #5: Create an Error_log__c entry that saves the results
-                    //          of calling the getStatusCode method and the getMessage
+                    //          of calling the getStatusCode method and the c
                     //          method of the Database.error class on the err variable.
-
+					Error_Log__c error_DML = new Error_Log__c();
+            		error_DML.Source__c = 'exceptionsDML';
+            		error_DML.Message__c = err.getStatusCode() + ' ' + err.getMessage();
+            		insert error_DML;
                 }
             }
         }
