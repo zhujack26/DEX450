@@ -31,7 +31,8 @@ public class CourseDeliveryTriggerHandler {
             //TODO #3: Complete the following if statement using the Apex Safe Navigation Operator
             // to reference oldCourseDeliveryMap. The if statement should evaluate to true if
             // oldCourseDeliveryMap is null or if the old start date is not equal to the new start date
-            if (oldCourseDeliveryMap == NULL || (oldCourseDeliveryMap.get(cd.Id).Start_Date__c != cd.Start_Date__c)) {                
+            if (oldCourseDeliveryMap?.get(cd.Id).Start_Date__c != cd.Start_Date__c) { 
+            // oldCourseDeliveryMap == NULL || (oldCourseDeliveryMap.get(cd.Id).Start_Date__c != cd.Start_Date__c)
 
                 // Prevent the invoking DML action if the Start Date is in the allHolidays set.
                 if ( allHolidays.contains(cd.Start_Date__c) ) {
