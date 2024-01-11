@@ -9,6 +9,10 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>Test_Holidays</members>
+		<name>StaticResource</name>
+	</types>
+	<types>
 		<members>Case.Bug_Number__c</members>
 		<members>Case.Product_Category__c</members>
 		<members>Certification_Held__c.Date_Achieved__c</members>
