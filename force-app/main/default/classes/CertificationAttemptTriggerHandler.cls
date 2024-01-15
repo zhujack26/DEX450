@@ -83,6 +83,8 @@ public without sharing class CertificationAttemptTriggerHandler {
                 certHeld.Date_Achieved__c       = certAttempt.Attempt_Date__c;
                 certHeld.Certification__c       = certAttempt.Certification_Id__c;
                 certHeld.Certified_Professional__c = certAttempt.Certification_Candidate__c;
+                //flow 안쓰고 직접하는 방법
+                //certHeld.Cert_Held_Dup_key__c = certAttempt.Certification_Id__c + '|' + certAttempt.Certification_Candidate__c;
                 certsHeldToAdd.put(currentKey,certHeld);
             }
         }
