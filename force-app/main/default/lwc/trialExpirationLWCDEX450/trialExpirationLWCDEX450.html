@@ -1,0 +1,12 @@
+<template>
+    <template if:true={daysLeftString}>
+        <lightning-card title={daysLeftString} icon-name="custom:custom25">
+            <div slot="footer">This is DEX450 Demo org</div>
+        </lightning-card>
+    </template>
+
+    <template if:true={errors}>
+        <lightning-card title={errors.body.message} icon-name="utility:error">
+        </lightning-card>
+    </template>
+</template>
